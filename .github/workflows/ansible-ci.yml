@@ -1,0 +1,42 @@
+name: Ansible CI Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'ansible/**'
+      - '.github/workflows/ansible-ci.yml'
+  pull_request:
+    paths:
+      - 'ansible/**'
+      - '.github/workflows/ansible-ci.yml'
+
+jobs:
+  ansible-lint:
+    name: Ansible Lint
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ansible
+    outputs:
+      outcome: ${{ steps.lint.outcome }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+          cache: 'pip'
+
+      - name: Install pip packages
+        run: pip install -r requirements.txt
+
+      - name: Ansible Lint
+        id: lint
+        run: ansible-lint -s

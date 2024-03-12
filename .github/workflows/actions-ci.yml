@@ -1,0 +1,24 @@
+name: Actions CI Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Lint Actions
+        uses: reviewdog/action-actionlint@v1
+        with:
+          fail_on_error: true
