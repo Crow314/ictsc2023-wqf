@@ -1,0 +1,3 @@
+export ICTSC_INFRA_PASSWORD="..."
+export USER_PASSWORD="..."
+export PASSWORD_SALT="ictsc2023"
