@@ -1,0 +1,11 @@
+ansible==8.3.0
+ansible-core>=2.15
+Jinja2>=3.1.2
+paramiko>=3.3.0
+cffi==1.14.0
+cryptography==41.0.6
+MarkupSafe==1.1.1
+passlib==1.7.2
+pycparser==2.20
+PyYAML==5.4
+six==1.15.0

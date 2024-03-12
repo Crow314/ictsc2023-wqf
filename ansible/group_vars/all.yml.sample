@@ -1,0 +1,3 @@
+ansible_user: ictsc
+ansible_password: ICTSC_PASSWORD
+ansible_become_password: ICTSC_PASSWORD
