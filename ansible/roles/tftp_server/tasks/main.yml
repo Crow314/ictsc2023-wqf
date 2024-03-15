@@ -1,0 +1,11 @@
+- name: Install tftp-server
+  ansible.builtin.dnf:
+    name:
+      - tftp-server
+    update_cache: true
+
+- name: Enable tftp.service
+  ansible.builtin.systemd_service:
+    name: tftp.service
+    state: started
+    enabled: true

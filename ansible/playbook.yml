@@ -1,13 +1,6 @@
-- name: Setup Router
-  hosts:
-    - router
-  connection: network_cli
-  vars:
-    ansible_network_os: vyos
-  roles:
-
 - name: Setup Server
   hosts:
     - server
   become: true
   roles:
+    - tftp_server
